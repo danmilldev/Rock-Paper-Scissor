@@ -65,9 +65,13 @@ function Game()
 
     while(roundNumber > 0)
     {
-        playerSelection = prompt("Choose Rock,Paper or Scissor").toLocaleLowerCase();
+        playerSelection = prompt("Choose Rock,Paper or Scissor");
 
-        console.log(playRound(playerSelection,getComputerChoice()));
+        if(typeof(playerSelection) === 'string')
+        {
+            playerSelection.toLowerCase();
+            console.log(playRound(playerSelection,getComputerChoice()));
+        }
 
         roundNumber--;
     }

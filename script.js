@@ -4,8 +4,19 @@ let computerScore = 0;
 
 function chooseSymbol(selectionNumber)
 {
+
+    if(selectionNumber > 3 || selectionNumber < 1)
+    {
+        return "not a symbol";
+    }
+    else if(typeof(selectionNumber) !== 'number')
+    {
+        throw new TypeError();
+    }
+
     //if the random number is 1 it returns "rock" if 2 returns "paper" if 3 returns "scissor"
     let symbol = selectionNumber == 1 ? "Rock" : selectionNumber == 2 ? "Paper" : "Scissor";
+
     return symbol;
 }
 
@@ -56,9 +67,13 @@ function playRound(playerSelection,computerSelection)
     {
         computerScore += 1;
     }
+    else if(playerSelection.toLowerCase() === computerSelection.toLowerCase())
+    {
+        console.log("its a tie");
+    }
     else
     {
-        result = "Its a tie!";
+        console.log("its not a symbol!!!");
     }
 
     currentResult = playerScore.toString() + " : " + computerScore.toString();
@@ -91,6 +106,4 @@ function Game()
     console.log(result);
 }
 
-Game();
-
-module.exports = sum;
+module.exports = chooseSymbol;

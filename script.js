@@ -1,8 +1,5 @@
-let roundNumber = 5;
 let playerScore = 0;
 let computerScore = 0;
-
-let resultElement = document.getElementById("resultElement");
 
 
 function chooseSymbol(selectionNumber)
@@ -95,3 +92,5 @@ function Game()
 }
 
 Game();
+
+module.exports = sum;

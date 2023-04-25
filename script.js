@@ -82,7 +82,7 @@ function playRound(playerSelection,computerSelection)
 }
 
 
-function Game()
+function game()
 {
     //starts a loop within the user is asked for a input and it will be checked against
     //the statements and will get back a result
@@ -106,4 +106,4 @@ function Game()
     console.log(result);
 }
 
-module.exports = chooseSymbol;
+module.exports = {chooseSymbol,game};

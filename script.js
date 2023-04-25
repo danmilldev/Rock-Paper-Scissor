@@ -1,4 +1,9 @@
 let roundNumber = 5;
+let playerScore = 0;
+let computerScore = 0;
+
+let resultElement = document.getElementById("resultElement");
+
 
 function chooseSymbol(selectionNumber)
 {
@@ -27,38 +32,41 @@ function playRound(playerSelection,computerSelection)
     //and returns if the player wins or not
 
     //the result variable to store the game result in it
-    let result = "";
+
+    let currentResult = "";
 
     if(playerSelection == "rock" && computerSelection == "Scissor")
     {
-        result = "Player has won!";
+        playerScore += 1;
     }
     else if(playerSelection == "rock" && computerSelection == "Paper")
     {
-        result = "Computer has won!";
+        computerScore += 1;
     }
     else if(playerSelection == "paper" && computerSelection == "Rock")
     {
-        result = "Player has won!";
+        playerScore += 1;
     }
     else if(playerSelection == "paper" && computerSelection == "Scissor")
     {
-        result = "Computer has won!";
+        computerScore += 1;
     }
     else if(playerSelection == "scissor" && computerSelection == "Paper")
     {
-        result = "Player has won!";
+        playerScore += 1;
     }
     else if(playerSelection == "scissor" && computerSelection == "Rock")
     {
-        result = "Computer has won!";
+        computerScore += 1;
     }
     else
     {
         result = "Its a tie!";
     }
 
-    return result;
+    currentResult = playerScore.toString() + " : " + computerScore.toString();
+
+    return currentResult;
 }
 
 
@@ -67,18 +75,23 @@ function Game()
     //starts a loop within the user is asked for a input and it will be checked against
     //the statements and will get back a result
 
-    while(roundNumber > 0)
+    while(playerScore < 5 && computerScore < 5)
     {
-        playerSelection = prompt("Choose Rock,Paper or Scissor");
+            playerSelection = prompt("Choose Rock,Paper or Scissor");
 
-        if(typeof(playerSelection) === 'string')
-        {
-            playerSelection.toLowerCase();
-            console.log(playRound(playerSelection,getComputerChoice()));
-        }
-
-        roundNumber--;
+            if(typeof(playerSelection) === 'string')
+            {
+                playerSelection.toLowerCase();
+                console.log(playRound(playerSelection,getComputerChoice()));
+            }
+            else
+            {
+                break;
+            }
     }
+
+    let result = playerScore > 5 ? "Player Won" : "Computer won";
+    console.log(result);
 }
 
 Game();

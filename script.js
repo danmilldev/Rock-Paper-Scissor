@@ -70,10 +70,6 @@ function playRound(playerSelection,computerSelection)
     {
         console.log("its a tie");
     }
-    else
-    {
-        console.log("its not a symbol!!!");
-    }
 
     currentResult = playerScore.toString() + " : " + computerScore.toString();
 
@@ -110,6 +106,7 @@ function game()
             if(typeof(playerSelection) === 'string')
             {
                 playerSelection.toLowerCase();
+                console.log(playerSelection);
                 console.log(playRound(playerSelection,getComputerChoice()));
             }
             else

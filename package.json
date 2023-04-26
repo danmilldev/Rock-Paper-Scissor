@@ -4,12 +4,16 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:watch":"jest --watchAll",
+    "start": "parcel index.html"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^29.5.0"
+    "@babel/preset-env": "^7.21.4",
+    "jest": "^29.5.0",
+    "parcel": "^2.8.3"
   }
 }

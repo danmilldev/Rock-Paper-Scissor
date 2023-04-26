@@ -1,7 +1,6 @@
 let playerScore = 0;
 let computerScore = 0;
 
-
 function chooseSymbol(selectionNumber)
 {
 
@@ -26,7 +25,7 @@ function getComputerChoice()
 {
     let choice = "";
 
-    choiceNumber = Math.floor(Math.random() * (4 - 1) + 1);
+    let choiceNumber = Math.floor(Math.random() * (4) + 1);
 
     choice = chooseSymbol(choiceNumber);
 
@@ -81,6 +80,23 @@ function playRound(playerSelection,computerSelection)
     return currentResult;
 }
 
+//made default parameter so it can be tested 
+function getWinner(player = 0, computer = 0)
+{
+    let result = "";
+
+    if(playerScore >= 5 || player != 0)
+    {
+        result = "Player Won";
+    }
+    else if(computerScore >= 5 || computer != 0)
+    {
+        result = "Computer Won";
+    }
+
+    return result;
+}
+
 
 function game()
 {
@@ -89,7 +105,7 @@ function game()
 
     while(playerScore < 5 && computerScore < 5)
     {
-            playerSelection = prompt("Choose Rock,Paper or Scissor");
+            let playerSelection = prompt("Choose Rock,Paper or Scissor");
 
             if(typeof(playerSelection) === 'string')
             {
@@ -102,8 +118,10 @@ function game()
             }
     }
 
-    let result = playerScore > 5 ? "Player Won" : "Computer won";
-    console.log(result);
+    console.log(getWinner());
 }
 
-module.exports = {chooseSymbol,game};
+export { game }
+
+export default { chooseSymbol, getWinner }
+

@@ -103,7 +103,7 @@ function game()
     {
             let playerSelection = prompt("Choose Rock,Paper or Scissor");
 
-            if(typeof(playerSelection) === 'string')
+            if(playerSelection !== null)
             {
                 playerSelection.toLowerCase();
                 console.log(playerSelection);

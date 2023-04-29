@@ -98,14 +98,14 @@ function getWinner(player = 0, computer = 0)
     return false;
 }
 
-// we use the .forEach method to iterate through each button
+//iterate through all available buttons
 buttons.forEach((button) => {
-
-  // and for each one we add a 'click' listener
+//adding an eventlistener to all buttons
   button.addEventListener('click', () => {
-
+    //check if someone has won on every run through
     if(!getWinner(playerScore,computerScore))
     {
+        //depending on wich button.id was pressed it will return the playerchoice
         playerchoice = button.id === "rock" ? "rock" : button.id === "paper" ? "paper" : "scissor";
         let computerGenChoice = getComputerChoice();
         result.innerHTML = playRound(playerchoice,computerGenChoice);

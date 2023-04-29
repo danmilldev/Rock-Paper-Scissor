@@ -118,7 +118,5 @@ function game()
     console.log(getWinner());
 }
 
-export { game }
-
-export default { chooseSymbol, getWinner }
+export default { chooseSymbol, getWinner, game }
 

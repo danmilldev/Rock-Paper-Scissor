@@ -5,8 +5,8 @@
   "main": "script.js",
   "scripts": {
     "test": "jest",
-    "test:watch":"jest --watchAll",
-    "start": "parcel index.html"
+    "test:watch": "jest --watchAll",
+    "build": "parcel ./public/index.html"
   },
   "keywords": [],
   "author": "",

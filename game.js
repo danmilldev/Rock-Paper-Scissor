@@ -1,3 +1,3 @@
-import { game } from "./script.js";
+import gameFunctions from "./script.js";
 
-game();
+gameFunctions.game();

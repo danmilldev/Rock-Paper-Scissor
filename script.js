@@ -110,6 +110,7 @@ buttons.forEach((button) => {
         let computerGenChoice = getComputerChoice();
         result.innerHTML = playRound(playerchoice,computerGenChoice);
     }
+    });
 });
 
 export default { chooseSymbol, getWinner }

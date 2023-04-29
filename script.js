@@ -1,5 +1,10 @@
 let playerScore = 0;
+let playerchoice = "";
 let computerScore = 0;
+
+const buttons = document.querySelectorAll('button');
+const result = document.getElementById("result");
+const endResult = document.getElementById("end-result");
 
 function chooseSymbol(selectionNumber)
 {
@@ -25,7 +30,7 @@ function getComputerChoice()
 {
     let choice = "";
 
-    let choiceNumber = Math.floor(Math.random() * (4) + 1);
+    let choiceNumber = Math.floor(Math.random() * (4 - 1) + 1);
 
     choice = chooseSymbol(choiceNumber);
 
@@ -79,44 +84,33 @@ function playRound(playerSelection,computerSelection)
 //made default parameter so it can be tested 
 function getWinner(player = 0, computer = 0)
 {
-    let result = "";
-
-    if(playerScore >= 5 || player != 0)
+    if(playerScore >= 5 && player != 0)
     {
-        result = "Player Won";
+        endResult.innerHTML = "Player Won";
+        return true;
     }
-    else if(computerScore >= 5 || computer != 0)
+    else if(computerScore >= 5 && computer != 0)
     {
-        result = "Computer Won";
+        endResult.innerHTML = "Computer Won";
+        return true;
     }
 
-    return result;
+    return false;
 }
 
-
-function game()
-{
-    //starts a loop within the user is asked for a input and it will be checked against
-    //the statements and will get back a result
-
-    while(playerScore < 5 && computerScore < 5)
+//iterate through all available buttons
+buttons.forEach((button) => {
+//adding an eventlistener to all buttons
+  button.addEventListener('click', () => {
+    //check if someone has won on every run through
+    if(!getWinner(playerScore,computerScore))
     {
-            let playerSelection = prompt("Choose Rock,Paper or Scissor");
-
-            if(playerSelection !== null)
-            {
-                playerSelection.toLowerCase();
-                console.log(playerSelection);
-                console.log(playRound(playerSelection,getComputerChoice()));
-            }
-            else
-            {
-                break;
-            }
+        //depending on wich button.id was pressed it will return the playerchoice
+        playerchoice = button.id === "rock" ? "rock" : button.id === "paper" ? "paper" : "scissor";
+        let computerGenChoice = getComputerChoice();
+        result.innerHTML = playRound(playerchoice,computerGenChoice);
     }
+});
 
-    console.log(getWinner());
-}
-
-export default { chooseSymbol, getWinner, game }
+export default { chooseSymbol, getWinner }
 
